@@ -8,12 +8,7 @@ const fetcher = async (url: string) => {
   const res = await axios.get(url)
   return res.data
 }
-
-// add buttons to go back and forth between pages
-// call API with new page when the buttons are pressed ]
-// display current pages and total pages 
-
-
+ 
 function UserTable() {
   const { data, error, isLoading, isValidating } = useSWR("http://localhost:5000/api/bog/users/", fetcher);
   if (isLoading) return <div>Loading</div>;
