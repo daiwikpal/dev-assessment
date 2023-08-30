@@ -23,6 +23,7 @@ app.get('/api/bog/users/:id', (req, res) => {
     res.json(user).status(200)
 });
 
+// GET endpoint for pagenation 
 app.get('/api/bog/usersByPage/:page', (req, res) => {
   const users = database.slice(0 + 10 * (req.params.page - 1), 9 + 10 * (req.params.page - 1) + 1 )
 
@@ -37,6 +38,7 @@ app.get('/api/bog/usersByPage/:page', (req, res) => {
   res.json(result).status(200); 
 });
 
+//POST endpoint for adding a user
 app.post('/api/addUser', (req, res) => {
     let data = req.body; 
     data["id"] = JSON.stringify(currentIdVal + 1); 
@@ -45,6 +47,7 @@ app.post('/api/addUser', (req, res) => {
     res.json({"message" : "User Added"}).status(200); 
 });  
 
+//PUT endpoint for updating a user
 app.put('/api/modifyUser/:id', (req, res) => {
   let data = req.body;
   let currentUser = database.find((user) => user.id === req.params.id); 
@@ -52,6 +55,7 @@ app.put('/api/modifyUser/:id', (req, res) => {
   res.json({"message" : "User Modified"}).status(200); 
 }); 
 
+// DELETE endpoint for deleting a user 
 app.delete('/api/removeUser/:id', (req, res) =>{
   let userToDelete = database.find((user) => user.id === req.params.id); 
   database.splice(database.indexOf(userToDelete), 1);
