@@ -48,7 +48,6 @@ function UserTable() {
           })}
         </tbody>
       </table>
-      <PaginationRow />
     </div>
   );
 }
